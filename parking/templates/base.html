@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sistema de Registro de Vehículos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Registro de Vehículos - Condominio</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'lista_propietarios' %}">Propietarios</a></li>
+                <li><a href="{% url 'lista_vehiculos' %}">Vehículos</a></li>
+                <li><a href="{% url 'lista_registros' %}">Registros</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

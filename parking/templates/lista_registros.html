@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Registros</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Vehículo</th>
+            <th>Fecha y Hora de Entrada</th>
+            <th>Fecha y Hora de Salida</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registro in registros %}
+        <tr>
+            <td>{{ registro.vehiculo.matricula }} - {{ registro.vehiculo.propietario.nombre }}</td>
+            <td>{{ registro.fecha_hora_entrada }}</td>
+            <td>{{ registro.fecha_hora_salida }}</td>
+            <td>
+                {% if not registro.fecha_hora_salida %}
+                <a href="{% url 'registrar_salida' registro.id %}">Registrar Salida</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'registrar_ingreso' %}">Registrar Nuevo Ingreso</a>
+{% endblock %}

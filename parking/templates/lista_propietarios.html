@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Propietarios</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Número de Apartamento</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for propietario in propietarios %}
+        <tr>
+            <td>{{ propietario.nombre }}</td>
+            <td>{{ propietario.numero_apartamento }}</td>
+            <td>{{ propietario.telefono }}</td>
+            <td>{{ propietario.email }}</td>
+            <td>
+                <a href="{% url 'editar_propietario' propietario.id %}">Editar</a>
+                <a href="{% url 'eliminar_propietario' propietario.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'crear_propietario' %}">Agregar Propietario</a>
+{% endblock %}

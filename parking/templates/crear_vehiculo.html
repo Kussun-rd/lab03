@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Crear Vehículo</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="propietario">Propietario:</label>
+    <select id="propietario" name="propietario" required>
+        {% for propietario in propietarios %}
+        <option value="{{ propietario.id }}">{{ propietario.nombre }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="matricula">Matrícula:</label>
+    <input type="text" id="matricula" name="matricula" required><br>
+
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca" name="marca" required><br>
+
+    <label for="modelo">Modelo:</label>
+    <input type="text" id="modelo" name="modelo" required><br>
+
+    <label for="color">Color:</label>
+    <input type="text" id="color" name="color" required><br>
+
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'lista_vehiculos' %}">Cancelar</a>
+{% endblock %}
+

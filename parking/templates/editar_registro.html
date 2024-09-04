@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Editar Registro</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Vehículo: {{ registro.vehiculo.matricula }} - Entrada: {{ registro.fecha_hora_entrada }}</p>
+
+    <!-- Ejemplo de campo adicional para notas -->
+    <label for="notas">Notas:</label>
+    <textarea id="notas" name="notas" rows="4">{{ registro.notas }}</textarea><br>
+
+    <button type="submit">Guardar Cambios</button>
+</form>
+<a href="{% url 'lista_registros' %}">Cancelar</a>
+{% endblock %}
